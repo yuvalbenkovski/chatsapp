@@ -1,0 +1,384 @@
+body {
+    height: 100vh;
+    background: linear-gradient(#dcdbd3, #d3dcdc);
+}
+
+.container-fluid {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+}
+
+#green-underlay {
+    background-color: #009688;
+    width: 100%;
+    height: 13.25%;
+    position: relative;
+}
+
+.window {
+    width: 82.5%;
+    height: 96%;
+    box-shadow: 0 0 5px gray;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 10;
+    background-color: #ededed;
+}
+
+.navbar {
+    background-color: #e5e5e5;
+}
+
+i {
+    color: gray;
+}
+
+.chat {
+    padding-right: 0;
+    position: relative;
+}
+
+.contacts {
+    border-left: 1px solid rgb(216, 216, 216);
+    padding-left: 0;
+}
+
+.profilepicture {
+    background-size: cover;
+    background-position: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.chatmain {
+    background-image: url('../images/19333445v2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: calc(100% - 56px - 64.24px);
+    display: flex;
+}
+
+/* .row {
+    height: calc(100% - 56px);
+}
+ */
+
+/* ------------------------------- */
+
+.searchBar {
+    width: 95%;
+    display: flex;
+    /*     flex-direction: row; */
+    /*     align-items: center; */
+}
+
+.searchInput {
+    width: 100%;
+    height: 2.4rem;
+    outline: none;
+    border: none;
+    border-radius: 1.625rem;
+    padding: 0 3.5rem 0 1.5rem;
+    font-size: 1rem;
+}
+
+.searchButton {
+    width: 3.5rem;
+    height: 2.4rem;
+    margin-left: -3.5rem;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.visible {
+    visibility: visible;
+    opacity: 1;
+    max-height: 100%;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    max-height: 0;
+}
+
+/* --------------------- Profile Menu */
+
+.profile-menu {
+    height: 100%;
+    transition: all .3s ease;
+    position: absolute;
+}
+
+.profile-menu-heading {
+    background-color: #00bfa5;
+    height: calc(126.67px - 19.125px);
+    width: 100%;
+}
+
+.profile-menu-heading i {
+    margin-bottom: 1em;
+    cursor: pointer;
+}
+
+.profile-menu-heading h4 {
+    margin-bottom: 0.65em;
+    font-weight: 400;
+}
+
+.profile-menu-picture {
+    height: 27.5%;
+}
+
+.profile-picture {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.profile-picture img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 50%;
+}
+
+.profile-menu-name {
+    background-color: #ffffff;
+    height: 10%;
+}
+
+.profile-name-heading {
+    color: #04988a;
+    font-size: 1.05rem;
+}
+
+.profile-menu-name .name {
+    font-size: 1.1rem;
+}
+
+.profile-menu-info {
+    color: #9a9a9a;
+    font-size: 1.1rem;
+    font-weight: 100;
+}
+
+.profile-menu-about {
+    background-color: #ffffff;
+    height: 10%;
+}
+
+.profile-menu-about .about {
+    font-size: 1.1rem;
+}
+
+.profile-about-heading {
+    color: #04988a;
+    font-size: 1.05rem;
+}
+
+.profile-menu-id {
+    background-color: #ffffff;
+    height: 10%;
+}
+
+/* ---------------------- */
+
+/* ---------------------- Group Menu*/
+
+.group-menu {
+    height: 100%;
+    transition: all .3s ease;
+    background-color: #ffffff;
+}
+
+.group-menu-heading {
+    background-color: #00bfa5;
+    height: calc(126.67px - 19.125px);
+    width: 100%;
+}
+
+.group-menu-heading i {
+    margin-bottom: 1em;
+    cursor: pointer;
+}
+
+.group-menu-heading h4 {
+    margin-bottom: 0.65em;
+    font-weight: 400;
+}
+
+.group-menu-search input {
+    border: none;
+    outline: none;
+    padding: 0;
+    border-bottom: 1px solid #9a9a9a;
+}
+
+.group-menu-search input::placeholder {
+    color: #9a9a9a;
+}
+
+/* ---------------------- */
+
+/* ----------------------  New Chat Menu*/
+
+.chat-menu {
+    height: 100%;
+    transition: all .3s ease;
+    background-color: #ffffff;
+}
+
+.chat-menu-heading {
+    background-color: #00bfa5;
+    height: calc(126.67px - 19.125px);
+    width: 100%;
+}
+
+.chat-menu-heading i {
+    margin-bottom: 1em;
+    cursor: pointer;
+}
+
+.chat-menu-heading h4 {
+    margin-bottom: 0.65em;
+    font-weight: 400;
+}
+
+.chat-menu-search {
+    background-color: #ededed;
+    height: calc(38.4px + 16px);
+}
+
+.chat-menu-group {
+    height: 7.5%;
+    border-bottom: 1px solid #ededed;
+    cursor: pointer;
+}
+
+.chat-menu-group:hover {
+    background-color: #e5e5e5;
+}
+
+.users-icon {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #009688;
+}
+
+.new-group-span {
+    font-size: 1.15rem;
+}
+
+/* ---------------------- */
+
+/* ----------------------  Starred Menu*/
+
+.starred-menu {
+    height: 100%;
+    transition: all .3s ease;
+    background-color: #ededed;
+}
+
+.starred-menu-heading {
+    background-color: #00bfa5;
+    height: calc(126.67px - 19.125px);
+    width: 100%;
+}
+
+.starred-menu-heading i {
+    margin-bottom: 1em;
+    cursor: pointer;
+}
+
+.starred-menu-heading h4 {
+    margin-bottom: 0.65em;
+    font-weight: 400;
+}
+
+.starred-messages-span {
+    color: #9a9a9a;
+    font-weight: 100;
+}
+
+.starred-info {
+    height: calc(100% - 107.54px);
+}
+
+/* ---------------------- */
+
+.dropdown-menu {
+    box-shadow: 0 0 5px gray;
+    border: none;
+}
+
+.chat-container {
+    width: 80%;
+    height: 97.5%;
+    margin: auto;
+}
+
+.msg-container-current {
+    width: fit-content;
+    height: fit-content;
+    background-color: #dcf8c6;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 1px #9a9a9a;
+    margin-right: auto;
+}
+
+.msg-container-other {
+    width: fit-content;
+    height: fit-content;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 2px #9a9a9a;
+    margin-left: auto;
+}
+
+.chat-footer {
+    background-color: #e5e5e5;
+    width: calc(100% - 12px);
+    box-sizing: border-box;
+    height: 7%;
+    bottom: 0;
+    position: absolute;
+}
+
+.footer-text-area {
+    width: 85%;
+    display: flex;
+}
+
+.footer-text-area .textInput {
+    width: 100%;
+    height: 2.7rem;
+    outline: none;
+    border: none;
+    border-radius: 1.625rem;
+    padding: 0 3.5rem 0 1.5rem;
+    font-size: 1rem;
+}
+
+.emoji .fa-laugh, .microphone .fa-microphone, .paperplane .fa-paper-plane {
+    font-size: 24px;
+    color: #919191;
+    cursor: pointer;
+}
+
+#send-button {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+}

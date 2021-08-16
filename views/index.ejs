@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>ChatsApp</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div id="green-underlay"></div>
+        <div class="window">
+            <div class="row" style="height: 100%;">
+                <div class="col-8 chat">
+                    <div class="col">
+                        <nav class="navbar navbar-expand-lg">
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                                <div class="navbar-nav">
+                                    <a class="nav-link active px-4" aria-current="page" href="#"><i
+                                            class="fas fa-ellipsis-v"></i>
+                                    </a>
+                                    <a class="nav-link" href="#"><i class="fas fa-search"></i></a>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="col chatmain">
+                        <div class="chat-container">
+                            <div class="msg-container-current">Hello</div>
+                            <div class="msg-container-other">Hi</div>
+                        </div>
+                    </div>
+                    <form action="">
+                        <div class="col chat-footer d-flex align-items-center">
+                            <div class="emoji mx-auto">
+                                <i class="far fa-laugh"></i>
+                            </div>
+                            <div class="footer-text-area">
+                                <input class="textInput" type="text" name="" placeholder="Write a message" value="" />
+                            </div>
+                            <!--                         <div class="microphone mx-auto">
+                            <i class="fas fa-microphone"></i>
+                        </div> -->
+                            <div class="paperplane mx-auto">
+                                <button type="submit" id="send-button"><i class="fas fa-paper-plane"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-4 contacts">
+                    <!-- ------Profile Menu------ -->
+                    <div class="profile-menu hidden">
+                        <div class="profile-menu-heading d-flex align-items-end">
+                            <i class="fas fa-arrow-left arrow-profile text-white fa-lg me-5 ms-4"></i>
+                            <h4 class="text-white">Profile</h4>
+                        </div>
+                        <div class="profile-menu-picture d-flex align-items-center justify-content-center">
+                            <div class="profile-picture">
+                                <img src="<%=currentUser.profile_picture.path%> " alt="">
+                            </div>
+                        </div>
+                        <div class="profile-menu-name">
+                            <div style="height: 50%;" class="d-flex">
+                                <span class="profile-name-heading ms-3 mt-3">Your name</span>
+                            </div>
+                            <div style="height: 50%;" class="d-flex justify-content-end align-items-end me-3">
+                                <span class="mb-2 name">
+                                    <%= currentUser.name %>
+                                </span><span class="mb-2 ms-2"><i class="fas fa-pen"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="profile-menu-info my-3 mx-3">
+                            <small>This is not your username. This name will appear to other people
+                                in your ChatsApp friends list.</small>
+                        </div>
+                        <div class="profile-menu-about">
+                            <div style="height: 50%;" class="d-flex">
+                                <span class="profile-about-heading ms-3 mt-3">About</span>
+                            </div>
+                            <div style="height: 50%;" class="d-flex justify-content-end align-items-end me-3">
+                                <div class="mb-2 d-flex me-auto">
+                                    <span class="about ms-3">
+                                        <%= currentUser.name %>
+                                    </span>
+                                </div>
+                                <span class="mb-2 mr-3"><i class="fas fa-pen"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ------------ -->
+                    <!-- ------Group-menu------ -->
+                    <div class="group-menu hidden">
+                        <div class="group-menu-heading d-flex align-items-end">
+                            <i class="fas fa-arrow-left arrow-group text-white fa-lg me-5 ms-4"></i>
+                            <h4 class="text-white">Add users to a group
+                            </h4>
+                        </div>
+                        <div class="group-menu-search my-4 mx-3">
+                            <input class="form-control-plaintext" type="text" placeholder="Enter username"
+                                aria-label="default input example">
+                        </div>
+                    </div>
+                    <!-- ------------ -->
+                    <!-- ------Starred-menu------ -->
+                    <div class="starred-menu hidden">
+                        <div class="starred-menu-heading d-flex align-items-end">
+                            <i class="fas fa-arrow-left arrow-starred text-white fa-lg me-5 ms-4"></i>
+                            <h4 class="text-white">Starred messages
+                            </h4>
+                        </div>
+                        <div class="starred-info d-flex justify-content-center"><span
+                                class="starred-messages-span align-self-center">You don't have any starred
+                                messages</span></div>
+                    </div>
+                    <!-- ------------ -->
+                    <!-- ------New Chat Menu------ -->
+                    <div class="chat-menu hidden">
+                        <div class="chat-menu-heading d-flex align-items-end">
+                            <i class="fas fa-arrow-left arrow-chat text-white fa-lg me-5 ms-4"></i>
+                            <h4 class="text-white">New chat
+                            </h4>
+                        </div>
+                        <div class="chat-menu-search d-flex">
+                            <div class="searchBar mx-auto align-items-center">
+                                <input class="searchInput" type="text" name="searchQueryInput"
+                                    placeholder="Search users from your friends list" value="" />
+                                <button class="searchButton" type="submit" name="searchQuerySubmit">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="chat-menu-group d-flex">
+                            <div class="users-icon align-self-center d-flex ms-3">
+                                <i class="fas fa-users fa-lg text-white align-self-center mx-auto"></i>
+                            </div>
+                            <span class="ms-3 my-auto new-group-span">New Group</span>
+                        </div>
+                    </div>
+                    <!-- ------------ -->
+                    <div class="contacts-main">
+                        <nav class="navbar navbar-expand-lg">
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                                <div class="navbar-nav">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link px-4" href="#" id="navbarDropdownMenuLink" role="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <li><a class="dropdown-item dropdown-item-group" href="#">New group</a></li>
+                                            <li><a class="dropdown-item dropdown-item-profile" href="#">Profile</a></li>
+                                            <li><a class="dropdown-item dropdown-item-starred" href="#">Starred
+                                                    messages</a></li>
+                                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                                            <li><a class="dropdown-item" href="/logout">Sign out</a></li>
+                                        </ul>
+                                    </li>
+                                    <a class="nav-link chat-icon" href="#"><i class="fas fa-comment-alt"></i>
+                                    </a>
+                                </div>
+                                <div class="navbar-nav ms-auto me-3">
+                                    <div class="profilepicture nav-link"
+                                        style="background-image: url('<%=currentUser.profile_picture.path%>');"></div>
+                                </div>
+                            </div>
+                        </nav>
+                        <div class="col my-2">
+                            <div class="searchBar mx-auto">
+                                <input class="searchInput" type="text" name="searchQueryInput"
+                                    placeholder="Search or start a new conversation" value="" />
+                                <button class="searchButton" type="submit" name="searchQuerySubmit">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script>
+        const profilePicture = document.querySelector('.profilepicture')
+        const profileMenu = document.querySelector('.profile-menu')
+        const groupMenu = document.querySelector('.group-menu')
+        const chatMenu = document.querySelector('.chat-menu')
+        const starredMenu = document.querySelector('.starred-menu')
+        const chatMenuNewGroup = document.querySelector('.chat-menu-group')
+        const chatIcon = document.querySelector('.chat-icon')
+        const arrowProfile = document.querySelector('.arrow-profile')
+        const arrowGroup = document.querySelector('.arrow-group')
+        const arrowChat = document.querySelector('.arrow-chat')
+        const arrowStarred = document.querySelector('.arrow-starred')
+        const contactsDiv = document.querySelector('.contacts-main')
+        const dropdownItemProfile = document.querySelector('.dropdown-item-profile')
+        const dropdownItemGroup = document.querySelector('.dropdown-item-group')
+        const dropdownItemStarred = document.querySelector('.dropdown-item-starred')
+        profilePicture.addEventListener('click', () => {
+            contactsDiv.style.display = "none"
+            profileMenu.classList.replace('hidden', 'visible')
+        })
+        arrowProfile.addEventListener('click', () => {
+            profileMenu.classList.replace('visible', 'hidden')
+            setTimeout(function () {
+                contactsDiv.style.display = "block"
+            },
+                150);
+        })
+
+        dropdownItemProfile.addEventListener('click', () => {
+            profileMenu.classList.replace('hidden', 'visible')
+            contactsDiv.style.display = "none"
+        })
+        dropdownItemGroup.addEventListener('click', () => {
+            groupMenu.classList.replace('hidden', 'visible')
+            contactsDiv.style.display = "none"
+            chatMenu.style.display = "none"
+            starredMenu.style.display = "none"
+        })
+        arrowGroup.addEventListener('click', () => {
+            groupMenu.classList.replace('visible', 'hidden')
+            setTimeout(function () {
+                contactsDiv.style.display = "block"
+                chatMenu.style.display = "block"
+                starredMenu.style.display = "block"
+            },
+                150);
+        });
+        chatIcon.addEventListener('click', () => {
+            chatMenu.classList.replace('hidden', 'visible')
+            contactsDiv.style.display = "none"
+        })
+        arrowChat.addEventListener('click', () => {
+            chatMenu.classList.replace('visible', 'hidden')
+            setTimeout(function () {
+                contactsDiv.style.display = "block"
+            },
+                150);
+        });
+        chatMenuNewGroup.addEventListener('click', () => {
+            chatMenu.style.display = "none";
+            starredMenu.style.display = "none";
+            chatMenu.classList.replace('visible', 'hidden')
+            groupMenu.classList.replace('hidden', 'visible')
+        })
+
+        dropdownItemStarred.addEventListener('click', () => {
+            chatMenu.style.display = "none"
+            starredMenu.classList.replace('hidden', 'visible')
+            contactsDiv.style.display = "none"
+        })
+        arrowStarred.addEventListener('click', () => {
+            starredMenu.classList.replace('visible', 'hidden')
+            setTimeout(function () {
+                contactsDiv.style.display = "block"
+                chatMenu.style.display = "block"
+            },
+                150);
+        })
+    </script>
+</body>
+
+</html>
