@@ -1,6 +1,7 @@
 body {
     height: 100vh;
     background: linear-gradient(#dcdbd3, #d3dcdc);
+    font-family: 'Urbanist', sans-serif;
 }
 
 .container-fluid {
@@ -17,8 +18,8 @@ body {
 }
 
 .window {
-    width: 55%;
-    height: 92.50%;
+    width: 35%;
+    height: 82.50%;
     box-shadow: 0 0 25px gray;
     border-radius: 5px;
     position: absolute;
@@ -59,12 +60,27 @@ input:focus::placeholder {
     color: transparent;
 }
 
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
 .icon {
     position: absolute;
 }
 
 .heading {
-    color: #0a8183;
+    color: #128C7E;
     font-weight: 300;
     font-size: 2.5rem;
+}
+
+.img {
+    width: 400px;
+    height: 400px;
+}
+
+.img img {
+    width: 100%;
+    height: 100%;
+    image-rendering: -webkit-optimize-contrast;
 }

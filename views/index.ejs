@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- -----------Font-------------- -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@100;200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <title>ChatsApp</title>
 </head>
 
@@ -20,45 +25,55 @@
         <div class="window">
             <div class="row" style="height: 100%;">
                 <div class="col-8 chat">
-                    <div class="col">
-                        <nav class="navbar navbar-expand-lg">
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-                                aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                                <div class="navbar-nav">
-                                    <a class="nav-link active px-4" aria-current="page" href="#"><i
-                                            class="fas fa-ellipsis-v"></i>
-                                    </a>
-                                    <a class="nav-link" href="#"><i class="fas fa-search"></i></a>
+                    <div class="default-window visible">
+                        <div class="img mx-auto"></div>
+                        <h1 class="mt-5 text-center">Start chatting</h1>
+                        <div class="info mt-3 text-center mx-auto">
+                            In order to start chatting, begin by adding users to your contacts
+                            list.<br>
+                            You can then click on a user and a new chat window will appear.
+                        </div>
+                        <div class="bottom-line"></div>
+                    </div>
+                    <!-- ---------Chat window--------- -->
+                    <div class="chat-container hidden">
+                        <div class="col">
+                            <nav class="navbar navbar-expand-lg chat-navbar">
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                                    <div class="navbar-nav">
+                                        <a class="nav-link px-4" aria-current="page" href="#"><i
+                                                class="fas fa-ellipsis-v"></i>
+                                        </a>
+                                        <a class="nav-link" href="#"><i class="fas fa-search"></i></a>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class=" col chatmain">
+                            <div class="message-container" data-roomname="">
+                            </div>
+                        </div>
+                        <form id="chat-form" autocomplete="off">
+                            <div class="col chat-footer d-flex align-items-center">
+                                <div class="emoji mx-auto">
+                                    <i class="far fa-laugh"></i>
+                                </div>
+                                <div class="footer-text-area">
+                                    <input class="textInput" id="textInput" type="text" placeholder="Write a message" />
+                                </div>
+                                <div class="paperplane mx-auto">
+                                    <button type="submit" class="send-button"><i
+                                            class="fas fa-paper-plane"></i></button>
                                 </div>
                             </div>
-                        </nav>
+                        </form>
                     </div>
-                    <div class="col chatmain">
-                        <div class="chat-container">
-                            <div class="msg-container-current">Hello</div>
-                            <div class="msg-container-other">Hi</div>
-                        </div>
-                    </div>
-                    <form action="">
-                        <div class="col chat-footer d-flex align-items-center">
-                            <div class="emoji mx-auto">
-                                <i class="far fa-laugh"></i>
-                            </div>
-                            <div class="footer-text-area">
-                                <input class="textInput" type="text" name="" placeholder="Write a message" value="" />
-                            </div>
-                            <!--                         <div class="microphone mx-auto">
-                            <i class="fas fa-microphone"></i>
-                        </div> -->
-                            <div class="paperplane mx-auto">
-                                <button type="submit" id="send-button"><i class="fas fa-paper-plane"></i></button>
-                            </div>
-                        </div>
-                    </form>
+                    <!-- ------------------------- -->
                 </div>
                 <div class="col-4 contacts">
                     <!-- ------Profile Menu------ -->
@@ -67,34 +82,34 @@
                             <i class="fas fa-arrow-left arrow-profile text-white fa-lg me-5 ms-4"></i>
                             <h4 class="text-white">Profile</h4>
                         </div>
-                        <div class="profile-menu-picture d-flex align-items-center justify-content-center">
-                            <div class="profile-picture">
+                        <div class="profile-menu-picture-div d-flex align-items-center justify-content-center">
+                            <div class="profile-menu-picture">
                                 <img src="<%=currentUser.profile_picture.path%> " alt="">
                             </div>
                         </div>
                         <div class="profile-menu-name">
                             <div style="height: 50%;" class="d-flex">
-                                <span class="profile-name-heading ms-3 mt-3">Your name</span>
+                                <span class="profile-info-heading ms-3 mt-3">Your name</span>
                             </div>
                             <div style="height: 50%;" class="d-flex justify-content-end align-items-end me-3">
                                 <span class="mb-2 name">
-                                    <%= currentUser.name %>
+                                    <%=currentUser.name %>
                                 </span><span class="mb-2 ms-2"><i class="fas fa-pen"></i>
                                 </span>
                             </div>
                         </div>
                         <div class="profile-menu-info my-3 mx-3">
                             <small>This is not your username. This name will appear to other people
-                                in your ChatsApp friends list.</small>
+                                in your ChatsApp contacts list.</small>
                         </div>
                         <div class="profile-menu-about">
                             <div style="height: 50%;" class="d-flex">
-                                <span class="profile-about-heading ms-3 mt-3">About</span>
+                                <span class="profile-info-heading ms-3 mt-3">About</span>
                             </div>
                             <div style="height: 50%;" class="d-flex justify-content-end align-items-end me-3">
                                 <div class="mb-2 d-flex me-auto">
                                     <span class="about ms-3">
-                                        <%= currentUser.name %>
+                                        <%=currentUser.about%>
                                     </span>
                                 </div>
                                 <span class="mb-2 mr-3"><i class="fas fa-pen"></i>
@@ -138,21 +153,64 @@
                         <div class="chat-menu-search d-flex">
                             <div class="searchBar mx-auto align-items-center">
                                 <input class="searchInput" type="text" name="searchQueryInput"
-                                    placeholder="Search users from your friends list" value="" />
+                                    placeholder="Search users from your contacts list" value="" />
                                 <button class="searchButton" type="submit" name="searchQuerySubmit">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
                         </div>
+                        <div class="chat-menu-add d-flex">
+                            <div class="chat-menu-icon align-self-center d-flex ms-3">
+                                <i class="fas fa-user-plus fa-lg text-white align-self-center mx-auto"></i>
+                            </div>
+                            <span class="ms-3 my-auto new-group-span">Add user</span>
+                        </div>
                         <div class="chat-menu-group d-flex">
-                            <div class="users-icon align-self-center d-flex ms-3">
+                            <div class="chat-menu-icon align-self-center d-flex ms-3">
                                 <i class="fas fa-users fa-lg text-white align-self-center mx-auto"></i>
                             </div>
-                            <span class="ms-3 my-auto new-group-span">New Group</span>
+                            <span class="ms-3 my-auto new-group-span">Create new group</span>
                         </div>
+                        <% if(currentUser.contacts_list.length) { %>
+                            <% for(let contact of contacts) { %>
+                                <div class="user" data-username="<%=contact.username%>">
+                                    <div class="user-profile-picture ms-3">
+                                        <img src="<%=contact.profile_picture.path%>" alt="">
+                                    </div>
+                                    <div class="ms-3">
+                                        <div class="name">
+                                            <%=contact.name%>
+                                        </div>
+                                        <div class="about">
+                                            <%=contact.about%>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+                                    <% } %>
                     </div>
                     <!-- ------------ -->
-                    <div class="contacts-main">
+                    <!-- ------Add user menu------ -->
+                    <div class="add-menu hidden">
+                        <div class="add-menu-heading d-flex align-items-end">
+                            <i class="fas fa-arrow-left arrow-add text-white fa-lg me-5 ms-4"></i>
+                            <h4 class="text-white">Add a new user
+                            </h4>
+                        </div>
+                        <form action="" method="" id="search-user-form">
+                            <div class="add-menu-search d-flex">
+                                <div class="searchBar mx-auto align-items-center">
+                                    <input class="searchInput" type="text" id="searchUsers" autocomplete="off"
+                                        placeholder="Type username" />
+                                    <button class="searchButton" type="submit" name="">
+                                        <i class=" fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- ------------ -->
+                    <div class="contacts-main visible">
                         <nav class="navbar navbar-expand-lg">
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
@@ -167,8 +225,11 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <li><a class="dropdown-item dropdown-item-group" href="#">New group</a></li>
-                                            <li><a class="dropdown-item dropdown-item-profile" href="#">Profile</a></li>
+                                            <li><a class="dropdown-item dropdown-item-group" href="#">New
+                                                    group</a>
+                                            </li>
+                                            <li><a class="dropdown-item dropdown-item-profile" href="#">Profile</a>
+                                            </li>
                                             <li><a class="dropdown-item dropdown-item-starred" href="#">Starred
                                                     messages</a></li>
                                             <li><a class="dropdown-item" href="#">Settings</a></li>
@@ -180,7 +241,8 @@
                                 </div>
                                 <div class="navbar-nav ms-auto me-3">
                                     <div class="profilepicture nav-link"
-                                        style="background-image: url('<%=currentUser.profile_picture.path%>');"></div>
+                                        style="background-image: url('<%=currentUser.profile_picture.path%>');">
+                                    </div>
                                 </div>
                             </div>
                         </nav>
@@ -207,82 +269,70 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <script>
+        window.currentUser = '<%=currentUser.username%>'
+        window.currentUserContacts = '<%=currentUser.contacts_list%>'
+    </script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/javascripts/main.js"></script>
+    <script>
         const profilePicture = document.querySelector('.profilepicture')
         const profileMenu = document.querySelector('.profile-menu')
         const groupMenu = document.querySelector('.group-menu')
         const chatMenu = document.querySelector('.chat-menu')
         const starredMenu = document.querySelector('.starred-menu')
+        const chatMenuAdd = document.querySelector('.chat-menu-add')
+        const addMenu = document.querySelector('.add-menu')
         const chatMenuNewGroup = document.querySelector('.chat-menu-group')
         const chatIcon = document.querySelector('.chat-icon')
         const arrowProfile = document.querySelector('.arrow-profile')
         const arrowGroup = document.querySelector('.arrow-group')
         const arrowChat = document.querySelector('.arrow-chat')
         const arrowStarred = document.querySelector('.arrow-starred')
+        const arrowAdd = document.querySelector('.arrow-add')
         const contactsDiv = document.querySelector('.contacts-main')
         const dropdownItemProfile = document.querySelector('.dropdown-item-profile')
         const dropdownItemGroup = document.querySelector('.dropdown-item-group')
         const dropdownItemStarred = document.querySelector('.dropdown-item-starred')
+        //-----------------------------------------------
+        //-----------------------------------------------
         profilePicture.addEventListener('click', () => {
-            contactsDiv.style.display = "none"
-            profileMenu.classList.replace('hidden', 'visible')
+            toggleDisplay(profileMenu, contactsDiv)
         })
         arrowProfile.addEventListener('click', () => {
-            profileMenu.classList.replace('visible', 'hidden')
-            setTimeout(function () {
-                contactsDiv.style.display = "block"
-            },
-                150);
+            toggleDisplay(contactsDiv, profileMenu)
         })
 
         dropdownItemProfile.addEventListener('click', () => {
-            profileMenu.classList.replace('hidden', 'visible')
-            contactsDiv.style.display = "none"
+            toggleDisplay(profileMenu, contactsDiv)
         })
         dropdownItemGroup.addEventListener('click', () => {
-            groupMenu.classList.replace('hidden', 'visible')
-            contactsDiv.style.display = "none"
-            chatMenu.style.display = "none"
-            starredMenu.style.display = "none"
+            toggleDisplay(groupMenu, contactsDiv)
         })
         arrowGroup.addEventListener('click', () => {
-            groupMenu.classList.replace('visible', 'hidden')
-            setTimeout(function () {
-                contactsDiv.style.display = "block"
-                chatMenu.style.display = "block"
-                starredMenu.style.display = "block"
-            },
-                150);
+            toggleDisplay(contactsDiv, groupMenu)
         });
         chatIcon.addEventListener('click', () => {
-            chatMenu.classList.replace('hidden', 'visible')
-            contactsDiv.style.display = "none"
+            toggleDisplay(chatMenu, contactsDiv)
         })
         arrowChat.addEventListener('click', () => {
-            chatMenu.classList.replace('visible', 'hidden')
-            setTimeout(function () {
-                contactsDiv.style.display = "block"
-            },
-                150);
+            toggleDisplay(contactsDiv, chatMenu)
         });
         chatMenuNewGroup.addEventListener('click', () => {
-            chatMenu.style.display = "none";
-            starredMenu.style.display = "none";
-            chatMenu.classList.replace('visible', 'hidden')
-            groupMenu.classList.replace('hidden', 'visible')
+            toggleDisplay(groupMenu, chatMenu)
         })
 
         dropdownItemStarred.addEventListener('click', () => {
-            chatMenu.style.display = "none"
-            starredMenu.classList.replace('hidden', 'visible')
-            contactsDiv.style.display = "none"
+            toggleDisplay(starredMenu, contactsDiv)
         })
         arrowStarred.addEventListener('click', () => {
-            starredMenu.classList.replace('visible', 'hidden')
-            setTimeout(function () {
-                contactsDiv.style.display = "block"
-                chatMenu.style.display = "block"
-            },
-                150);
+            toggleDisplay(contactsDiv, starredMenu)
+        })
+        chatMenuAdd.addEventListener('click', () => {
+            toggleDisplay(addMenu, chatMenu)
+        })
+        arrowAdd.addEventListener('click', () => {
+            toggleDisplay(chatMenu, addMenu)
+            location.reload()
         })
     </script>
 </body>

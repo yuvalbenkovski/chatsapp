@@ -1,6 +1,7 @@
 body {
     height: 100vh;
     background: linear-gradient(#dcdbd3, #d3dcdc);
+    font-family: 'Urbanist', sans-serif;
 }
 
 .container-fluid {
@@ -51,7 +52,7 @@ body {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background-size: contain;
+    background-size: cover;
     box-shadow: 0 0 10px gray;
 }
 
@@ -64,7 +65,7 @@ body {
 
 .name-field {
     border: none;
-    border-bottom: 1.5px solid #28be12;
+    border-bottom: 1.5px solid #25D366;
     width: 50%;
     border-radius: 0;
     outline: none;
@@ -82,18 +83,22 @@ input:focus::placeholder {
     color: transparent;
 }
 
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
 .icon {
     position: absolute;
 }
 
 .heading {
-    color: #0a8183;
+    color: #128C7E;
     font-weight: 300;
     font-size: 2.5rem;
 }
 
 .profile-heading {
-    color: #0a8183;
+    color: #128C7E;
     font-weight: 300;
     font-size: 2rem;
 }
@@ -112,5 +117,5 @@ input[type="file"] {
 }
 
 #upload-icon {
-    color: #286090;
+    color: #34B7F1;
 }
