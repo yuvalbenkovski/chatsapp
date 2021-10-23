@@ -10,8 +10,7 @@ const messageSchema = new Schema({
 const roomSchema = new Schema({
     room_name: String,
     members: [String],
-    messages: [messageSchema],
-/*     notifications: [notificationSchema] */
+    messages: [messageSchema]
 })
 module.exports.Room = mongoose.model('Room', roomSchema)
 module.exports.Message = mongoose.model('Message', messageSchema)

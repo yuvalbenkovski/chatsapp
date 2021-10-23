@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose
 const passportLocalMongoose = require('passport-local-mongoose');
 
-
 const notificationSchema = new Schema({
     count: {
         type: Number,
@@ -10,6 +9,8 @@ const notificationSchema = new Schema({
     },
     from_room: String,
 })
+
+
 const userSchema = new Schema({
     email: {
         type: String,
@@ -42,6 +43,9 @@ const userSchema = new Schema({
     },
     rooms: {
         type: [String]
+    },
+    current_room: {
+        type: String
     },
     notifications: {
         type: [notificationSchema],

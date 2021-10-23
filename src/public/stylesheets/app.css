@@ -123,7 +123,7 @@ i {
     background-image: url('/images/icon-pattern-chat.svg');
     background-size: contain;
     background-repeat: repeat;
-/*     background-position: center; */
+    /*     background-position: center; */
     height: calc(100% - 56px - 64.24px);
     display: flex;
     overflow-y: auto;
@@ -185,6 +185,14 @@ i {
     position: absolute;
 }
 
+.profile-menu .text-box {
+    border: none;
+    border-bottom: 2px solid #00bfa5;
+    width: 100%;
+    margin-right: 1rem;
+    font-size: 1.1rem;
+}
+
 .profile-menu-heading {
     background-color: #00bfa5;
     height: calc(126.67px - 19.125px);
@@ -225,6 +233,10 @@ i {
 
 .profile-menu-name .name {
     font-size: 1.1rem;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
 }
 
 .profile-menu-info {

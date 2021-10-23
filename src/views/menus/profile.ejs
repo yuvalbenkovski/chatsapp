@@ -1,0 +1,85 @@
+<div class="profile-menu hidden">
+    <div class="profile-menu-heading d-flex align-items-end">
+        <i class="fas fa-arrow-left arrow-profile text-white fa-lg me-5 ms-4"></i>
+        <h4 class="text-white">Profile</h4>
+    </div>
+    <div class="profile-menu-picture-div d-flex align-items-center justify-content-center">
+        <div class="profile-menu-picture">
+            <img src="<%=currentUser.profile_picture.path%> " alt="">
+        </div>
+    </div>
+    <div class="profile-menu-name">
+        <div style="height: 50%;" class="d-flex">
+            <span class="profile-info-heading ms-3 mt-3">Your name</span>
+        </div>
+        <div style="height: 50%;" class="d-flex align-items-end ms-3 name-parent">
+            <span class="mb-2 name">
+                <%=currentUser.name %>
+            </span><span class="mb-2 ms-auto me-3"><i class="fas fa-pen edit-name"></i>
+            </span>
+        </div>
+    </div>
+    <div class="profile-menu-info my-3 mx-3">
+        <small>This is not your username. This name will appear to other people
+            in your ChatsApp contacts list.</small>
+    </div>
+    <div class="profile-menu-about">
+        <div style="height: 50%;" class="d-flex">
+            <span class="profile-info-heading ms-3 mt-3">About</span>
+        </div>
+        <div style="height: 50%;" class="d-flex align-items-end ms-3 about-parent">
+            <span class="mb-2 about">
+                <%=currentUser.about%>
+            </span>
+            <span class="mb-2 ms-auto me-3"><i class="fas fa-pen edit-about"></i>
+            </span>
+        </div>
+    </div>
+</div>
+
+<script>
+    const currentUserName = "<%=currentUser.name%>"
+    const currentUserAbout = "<%=currentUser.about%>"
+    const editName = document.querySelector('.edit-name')
+    const editAbout = document.querySelector('.edit-about')
+    const name = document.querySelector('.profile-menu-name')
+    const nameParent = name.querySelector('.name-parent')
+    const about = document.querySelector('.profile-menu-about')
+    const aboutParent = about.querySelector('.about-parent')
+    function toggleTextBox(target, parent, value) {
+        const textBox = document.createElement('input');
+        target.classList.replace('fa-pen', 'fa-check')
+        textBox.type = 'text';
+        textBox.classList.add('text-box', 'mb-2')
+        textBox.value = value
+        parent.appendChild(textBox)
+    }
+
+    editName.addEventListener('click', (e) => {
+        if (name.querySelector('.name').hidden === false) {
+            name.querySelector('.name').hidden = true
+            toggleTextBox(editName, nameParent, currentUserName)
+        } else {
+            socket.emit('updateUser', nameParent.querySelector('.text-box').value, 'name')
+            name.querySelector('.name').hidden = false
+            editName.classList.replace('fa-check', 'fa-pen')
+            name.querySelector('.name').innerText = nameParent.querySelector('.text-box').value
+            nameParent.querySelector('.text-box').remove()
+        }
+    })
+
+
+    editAbout.addEventListener('click', (e) => {
+        if (about.querySelector('.about').hidden === false) {
+            about.querySelector('.about').hidden = true
+            toggleTextBox(editAbout, aboutParent, currentUserAbout)
+        } else {
+            socket.emit('updateUser', aboutParent.querySelector('.text-box').value, 'about')
+            about.querySelector('.about').hidden = false
+            editAbout.classList.replace('fa-check', 'fa-pen')
+            about.querySelector('.about').innerText = aboutParent.querySelector('.text-box').value
+            aboutParent.querySelector('.text-box').remove()
+        }
+    })
+
+</script>
